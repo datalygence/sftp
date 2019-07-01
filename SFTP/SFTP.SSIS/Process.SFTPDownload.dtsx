@@ -1,0 +1,199 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/22/2019 10:21:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SELVASATHYAPC"
+  DTS:CreatorName="SELVASATHYAPC\SelvaSathya"
+  DTS:DTSID="{684A6072-3350-4565-93F8-910E83E3201C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Process SFTPDownload"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{934F83E8-4678-4334-AEDE-B6F261B70C28}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{00D3E2EF-F54E-42DF-B383-9181957A8DAF}"
+      DTS:ObjectName="FileName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{5BD0C46E-7DC7-4CC7-AD2B-8F3DE0776221}"
+      DTS:ObjectName="LocalSourceDirectory">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{1F14FAB7-E1DD-4765-9590-9A608E791581}"
+      DTS:ObjectName="Port">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{104A2706-E5EC-42F7-972D-E49E4059BAEE}"
+      DTS:ObjectName="ProcessType">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{A2C8D14A-07FC-4C87-B9F0-676E3772C145}"
+      DTS:ObjectName="RemoteDirectory">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{0ED83705-447B-4B3F-AD66-736B16D283AE}"
+      DTS:ObjectName="ServerName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{ED99ADEC-2376-4270-A51C-0F71E4E57B72}"
+      DTS:ObjectName="SFTPBatchFileHistoryId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{29777EC4-08AF-4DF8-B146-3DB2AB812478}"
+      DTS:ObjectName="UserName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SCR_Download from SFTP"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{C70FB18B-5B62-466C-B755-20744FE41CDE}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SCR_Download from SFTP"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_a3fdc308f5374042ab4c8628aefe9cff"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update SFTPBatchiFileHistory"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8B30F66A-7043-4A9D-9066-7007E644790A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update SFTPBatchiFileHistory"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="update Control.SFTPBatchFileHistory set SFTPUploadDatetime = getdate() where SFTPBatchFileHistoryId = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::SFTPBatchFileHistoryId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{15E4D4D3-E8A6-489E-A60C-36F6E3A220EB}"
+      DTS:From="Package\SCR_Download from SFTP"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL_Update SFTPBatchiFileHistory" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\SCR_Download from SFTP"
+          TopLeft="461,158" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\SQL_Update SFTPBatchiFileHistory"
+          TopLeft="439,252" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="561.25,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

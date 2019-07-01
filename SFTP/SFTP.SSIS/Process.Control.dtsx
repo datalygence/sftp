@@ -1,0 +1,752 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/22/2019 10:21:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SELVASATHYAPC"
+  DTS:CreatorName="SELVASATHYAPC\SelvaSathya"
+  DTS:DTSID="{BF53FB14-CFD0-4CB0-B5EE-B7FCE0092EB2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Process Control"
+  DTS:PackageType="5"
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{CECEAD0A-7C04-4A09-A6CC-C5E57B2B3B68}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{63C4CFBD-9E36-427B-9552-28D614FF2066}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ActiveFlag">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D67F4857-5FAC-419C-A18A-0BF1C7A35C8D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">BatchSucceeded</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5C85E996-7F83-42E7-9892-6D50E01A1DDA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalArchiveDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EEAB95A7-2BF7-45ED-BAA3-EE4BB12A0026}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalProcessingDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EABFA955-AABE-4EF9-A60B-2EBF09A87AB8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalSourceDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{40B023C7-2392-4E59-B582-3E79384AD990}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Port">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D61A7A57-D400-405B-B9E5-3F01CDDC52B9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RemoteDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{89638506-17BF-499D-9BCB-DCD271871555}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ServerName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D959104C-2DF0-4D3B-BBED-512FE0A35435}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SFTPBatchHistoryId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{70688419-FD98-42FC-AFD8-56B8B3FA6E78}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SFTPConfigId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2A9FC41D-5AF5-4963-9CF6-B343969A8F46}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="UserName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SC_Extract, Generate, Upload"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2B1CACB3-5894-41AF-AD93-59EAD45791C0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC_Extract, Generate, Upload">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC_Extract, Generate, Upload\EP_GenerateFiles"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{b5342347-7dbd-4d9a-af25-f4826b0da526}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP_GenerateFiles"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Process.GenerateFiles.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>BatchId</ParameterName>
+                <BindedVariableOrParameterName>User::SFTPBatchHistoryId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SC_Extract, Generate, Upload\EP_Process_ArchiveFiles"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{d7292353-d62b-4bb6-b5bf-b811b12ae0bd}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP_Process_ArchiveFiles"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Process.ArchiveFiles.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>BatchId</ParameterName>
+                <BindedVariableOrParameterName>User::SFTPBatchHistoryId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SC_Extract, Generate, Upload\EP_Process_ExtractData"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{31D76B11-304A-4061-8851-0AAAC643482E}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP_Process_ExtractData"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Process.ExtractData.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>BatchId</ParameterName>
+                <BindedVariableOrParameterName>User::SFTPBatchHistoryId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SFTPProcessId</ParameterName>
+                <BindedVariableOrParameterName>$Project::SFTPProcessId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SC_Extract, Generate, Upload\EP_SFTPProcess"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{06467cb5-5d8f-4b0e-ae28-5d03bfef89fc}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EP_SFTPProcess"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Process.SFTP.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>BatchId</ParameterName>
+                <BindedVariableOrParameterName>User::SFTPBatchHistoryId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SC_Extract, Generate, Upload\SQL_CloseBatch"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{e75e057b-a5f9-4951-ba11-2346325bc51e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL_CloseBatch"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+              SQLTask:SqlStatementSource="exec Control.usp_CloseBatch ? , ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::SFTPBatchHistoryId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::BatchStatus"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SC_Extract, Generate, Upload\SQL_Get SFTP Process Details"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E2C81BB5-F7CF-4B19-BF8D-CBDF895B60DC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL_Get SFTP Process Details"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+              SQLTask:SqlStatementSource="exec [Control].[usp_GetSFTPProcessDetails] ?, ? out, ? out, ? out, ? out, ? out, ? out, ? out, ? out, ? out" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="$Project::SFTPProcessId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::SFTPConfigId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::RemoteDirectory"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::LocalSourceDirectory"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::LocalProcessingDirectory"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="User::LocalArchiveDirectory"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="User::ActiveFlag"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="User::ServerName"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="User::UserName"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="9"
+                SQLTask:DtsVariableName="User::Port"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{AA188A93-8EF5-4B12-A46D-ECD45CBACB4D}"
+          DTS:From="Package\SC_Extract, Generate, Upload\EP_Process_ExtractData"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SC_Extract, Generate, Upload\EP_GenerateFiles" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{BD416FA5-6DD7-44D8-83BA-D648D9BB188F}"
+          DTS:From="Package\SC_Extract, Generate, Upload\EP_GenerateFiles"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SC_Extract, Generate, Upload\EP_SFTPProcess" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{0957805F-228C-4D63-9F86-6BC95CFF399E}"
+          DTS:From="Package\SC_Extract, Generate, Upload\EP_SFTPProcess"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SC_Extract, Generate, Upload\EP_Process_ArchiveFiles" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{E35B0D63-67AC-43A1-B70C-AF5025681764}"
+          DTS:From="Package\SC_Extract, Generate, Upload\EP_Process_ArchiveFiles"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\SC_Extract, Generate, Upload\SQL_CloseBatch" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{F5EAC7E8-513D-437A-A7EF-02C4C80B71A0}"
+          DTS:From="Package\SC_Extract, Generate, Upload\SQL_Get SFTP Process Details"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\SC_Extract, Generate, Upload\EP_Process_ExtractData" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SMT_Notify on Failure"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{74c93b7e-9e48-4acc-869d-fa0263b99c7e}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SMT_Notify on Failure"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{8762DD56-DB1B-4780-BF72-8D1E2DA5F1A4}"
+          SendMailTask:From="no_reply@datalygence.com"
+          SendMailTask:To="selva2cu@gmail.com"
+          SendMailTask:Subject="Finance SFTP File Process - Failed"
+          SendMailTask:MessageSource="Hi,&#xA;&#xA;SFTP File Processing has completed with failure, Please investigate.&#xA;&#xA;Kind Regards &#xA;Data Team" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SMT_Notify on Success"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{5FC61523-05AC-4544-8B77-273CE0EFF117}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SMT_Notify on Success"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{8762DD56-DB1B-4780-BF72-8D1E2DA5F1A4}"
+          SendMailTask:From="selva2cu@gmail.com"
+          SendMailTask:To="selva2cu@gmail.com"
+          SendMailTask:Subject="Finance SFTP File Process"
+          SendMailTask:MessageSource="Hi,&#xA;&#xA;SFTP File Processing has completed Successfully.&#xA;&#xA;Kind Regards&#xA;Data Team" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_InitiateBatch"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CF768650-2CDE-4BBC-BB9D-E39CB71FDEB2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_InitiateBatch"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="exec Control.usp_InitiateBatch ?, ? out" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Project::SFTPProcessId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::SFTPBatchHistoryId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DECA0301-AD10-45D0-995F-7774F309C332}"
+      DTS:From="Package\SQL_InitiateBatch"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SC_Extract, Generate, Upload" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CD7DFD96-D1A2-4DCF-BE7C-66AE9EDE8AEE}"
+      DTS:From="Package\SC_Extract, Generate, Upload"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SMT_Notify on Success" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{61644BBB-BECE-4E0E-A50C-CECA26DD50E4}"
+      DTS:From="Package\SC_Extract, Generate, Upload"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SMT_Notify on Failure"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\SC_Extract, Generate, Upload\EP_GenerateFiles"
+          TopLeft="60,173" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SC_Extract, Generate, Upload\EP_Process_ArchiveFiles"
+          TopLeft="44,344" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SC_Extract, Generate, Upload\EP_Process_ExtractData"
+          TopLeft="46,89" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\SC_Extract, Generate, Upload\EP_SFTPProcess"
+          TopLeft="62,256" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\SC_Extract, Generate, Upload\SQL_CloseBatch"
+          TopLeft="65,435" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\SC_Extract, Generate, Upload\SQL_Get SFTP Process Details"
+          TopLeft="37,15" />
+        <EdgeLayout
+          Id="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 1]"
+          TopLeft="141.25,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 2]"
+          TopLeft="140,215">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 3]"
+          TopLeft="140.25,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 4]"
+          TopLeft="141.5,386">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC_Extract, Generate, Upload.PrecedenceConstraints[Constraint 5]"
+          TopLeft="145,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="304,532"
+          Size="304,575"
+          Id="Package\SC_Extract, Generate, Upload"
+          TopLeft="372,94" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SMT_Notify on Failure"
+          TopLeft="651,751" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\SMT_Notify on Success"
+          TopLeft="237,747" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SQL_InitiateBatch"
+          TopLeft="438,16" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="521.75,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="474.666666666667,669">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-143.666666666667,78"
+              Start="0,0"
+              End="-143.666666666667,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.4450261780105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.4450261780105"
+                    Point2="0,31.4450261780105"
+                    Point3="-4,31.4450261780105" />
+                  <mssgle:LineSegment
+                    End="-139.666666666667,31.4450261780105" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-139.666666666667,31.4450261780105"
+                    Point2="-143.666666666667,31.4450261780105"
+                    Point3="-143.666666666667,35.4450261780105" />
+                  <mssgle:LineSegment
+                    End="-143.666666666667,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="573.333333333333,669">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="169.166666666667,82"
+              Start="0,0"
+              End="169.166666666667,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.0575916230367" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.0575916230367"
+                    Point2="0,33.0575916230367"
+                    Point3="4,33.0575916230367" />
+                  <mssgle:LineSegment
+                    End="165.166666666667,33.0575916230367" />
+                  <mssgle:CubicBezierSegment
+                    Point1="165.166666666667,33.0575916230367"
+                    Point2="169.166666666667,33.0575916230367"
+                    Point3="169.166666666667,37.0575916230367" />
+                  <mssgle:LineSegment
+                    End="169.166666666667,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="69.3419856770834,38.0575916230367,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Disabled SMTP as we need SMTP server details to send an email"
+          ParentId="Package"
+          Size="176,64"
+          Id="bf39836b-05c8-43aa-a307-46d9ef9b4f9b"
+          TopLeft="459,741">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Color="#FFF1F1F1">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

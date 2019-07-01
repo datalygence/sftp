@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/22/2019 10:21:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SELVASATHYAPC"
+  DTS:CreatorName="SELVASATHYAPC\SelvaSathya"
+  DTS:DTSID="{0838318E-D2B3-46B0-8A20-EAD856831FE4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Process GenerateFiles"
+  DTS:PackageType="5"
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{54756ABF-F029-4BA9-AF70-0CC3E140A95C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{1A857190-B7A9-4D61-8C76-BC703C045B04}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">99</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{D598C103-D41F-4EA4-A911-1B3BA2DBBA31}"
+      DTS:ObjectName="SFTPProcessId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A26D6A57-DF06-4FD2-A52B-55D9FD0488C0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExportSQL">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F0F2D075-3CD4-400A-8436-3498951CD47D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileList">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FF71D5F4-8A73-4039-BE33-1F84EFDC48A6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileNameFormat">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9BE650AF-E9A9-4071-A47B-5D0780F01112}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalSourceDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FELC_Loop through the list and generate files"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{27833333-73DD-4CCA-BD38-965E73D061D3}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FELC_Loop through the list and generate files">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{7D430D27-C694-4F23-9E99-E4B3C13211E9}"
+        DTS:ObjectName="{7D430D27-C694-4F23-9E99-E4B3C13211E9}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::FileList" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FELC_Loop through the list and generate files\EPT_Generate File"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{3D451BC2-6A3D-45F9-8925-21E1CE39293F}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT_Generate File"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Process.GenerateFile.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>BatchId</ParameterName>
+                <BindedVariableOrParameterName>$Package::BatchId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>ExportSQL</ParameterName>
+                <BindedVariableOrParameterName>User::ExportSQL</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>FileNameFormat</ParameterName>
+                <BindedVariableOrParameterName>User::FileNameFormat</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LocalSourceDirectory</ParameterName>
+                <BindedVariableOrParameterName>User::LocalSourceDirectory</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{F465E55D-8E06-432B-AE80-67660A15BFA1}"
+          DTS:ObjectName="{F465E55D-8E06-432B-AE80-67660A15BFA1}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::LocalSourceDirectory" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{7B4B4785-5FDF-4BC2-847F-284F4EB95046}"
+          DTS:ObjectName="{7B4B4785-5FDF-4BC2-847F-284F4EB95046}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::FileNameFormat" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{DD36F2DB-2E73-4AD6-B3FA-2C38BBE9DC63}"
+          DTS:ObjectName="{DD36F2DB-2E73-4AD6-B3FA-2C38BBE9DC63}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::ExportSQL" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Get List to generate files"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8063787F-629F-43E0-9A09-7777F13C400D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Get List to generate files"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="select &#xA;&#x9;p.LocalSourceDirectory, &#xA;&#x9;fL.FileNameFormat, &#xA;&#x9;fL.ExportSQL&#xA;from &#xA;&#x9;Control.SFTPProcess p&#xA;&#x9;join Control.SFTPProcessFileList fL on p.SFTPProcessId = fL.SFTPProcessId&#xA;where &#xA;&#x9;fL.ActiveFlag = 1&#xA;&#x9;and fL.ProcessType = 'Upload'&#xA;&#x9;and p.SFTPProcessId = ?"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::FileList" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::SFTPProcessId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update File Generation End on Failure"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5c470719-a070-460c-a3f5-7584f97944bf}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update File Generation End on Failure"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="exec Control.usp_UpdateBatch ?, 'FileGeneration', 'End', 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update File Generation End On Success"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3f1ccf92-ce78-429a-852e-1ade8cef6866}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update File Generation End On Success"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="exec Control.usp_UpdateBatch ?, 'FileGeneration', 'End', 'Succeeded'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update File Generation Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DABAD4FD-3B57-4C22-852D-67AFEDF169D4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update File Generation Start"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="exec Control.usp_UpdateBatch ?, 'FileGeneration', 'Start', 'Started'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3469FE70-10B9-4ED6-897C-6F11D40531DB}"
+      DTS:From="Package\SQL_Update File Generation Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL_Get List to generate files" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F2EF98F4-BEFB-4D08-8F96-D9DBDF7312A6}"
+      DTS:From="Package\FELC_Loop through the list and generate files"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL_Update File Generation End On Success" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0EE03FA8-8106-49AB-B070-62300E36C1B9}"
+      DTS:From="Package\FELC_Loop through the list and generate files"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL_Update File Generation End on Failure"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{A394A6FD-2E05-4B87-8EF6-5A02C5AE665C}"
+      DTS:From="Package\SQL_Get List to generate files"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\FELC_Loop through the list and generate files" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="282,42"
+          Id="Package\SQL_Update File Generation End on Failure"
+          TopLeft="556,447" />
+        <NodeLayout
+          Size="290,42"
+          Id="Package\SQL_Update File Generation End On Success"
+          TopLeft="237,440" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\SQL_Update File Generation Start"
+          TopLeft="429,104" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\SQL_Get List to generate files"
+          TopLeft="436,181" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="546.5,146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165,42"
+          Id="Package\FELC_Loop through the list and generate files\EPT_Generate File"
+          TopLeft="53.5,13.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="248,82"
+          Size="248,126"
+          Id="Package\FELC_Loop through the list and generate files"
+          TopLeft="415,251" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="542.25,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="499,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117,63"
+              Start="0,0"
+              End="-117,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.4423076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.4423076923077"
+                    Point2="0,25.4423076923077"
+                    Point3="-4,25.4423076923077" />
+                  <mssgle:LineSegment
+                    End="-113,25.4423076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113,25.4423076923077"
+                    Point2="-117,25.4423076923077"
+                    Point3="-117,29.4423076923077" />
+                  <mssgle:LineSegment
+                    End="-117,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="579,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118,70"
+              Start="0,0"
+              End="118,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.2692307692308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.2692307692308"
+                    Point2="0,28.2692307692308"
+                    Point3="4,28.2692307692308" />
+                  <mssgle:LineSegment
+                    End="114,28.2692307692308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114,28.2692307692308"
+                    Point2="118,28.2692307692308"
+                    Point3="118,32.2692307692308" />
+                  <mssgle:LineSegment
+                    End="118,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="43.75865234375,33.2692307692308,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

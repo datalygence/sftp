@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/22/2019 10:21:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SELVASATHYAPC"
+  DTS:CreatorName="SELVASATHYAPC\SelvaSathya"
+  DTS:DTSID="{540954CA-F357-487D-A0BD-F0E0426CFD85}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.107"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Process ArchiveFiles"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{3EEC982C-A674-4807-9CE7-1559B4E1ECC0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{033FC8CA-3993-4D8A-A852-B1195AB1C5E7}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41514595-8AA5-4B31-8543-3C087F315B16}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileDetails">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41557CED-547F-405C-BDDD-C6E98004507E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{70200121-09CA-48EF-BE3B-BD93291F2066}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalArchiveDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{891892ED-57D2-40CF-AAE4-5E49758F9F70}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LocalSourceDirectory">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{28BA6372-315D-4F24-B75F-AA0F1D8A73C4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SFTPBatchFileHistoryId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FELC_Loop through list of files and Archive"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{3B3D25EF-B74F-47ED-A766-ADBBF7957158}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FELC_Loop through list of files and Archive">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{8FCF24B8-0E1A-4652-ADD2-A3FA765F3847}"
+        DTS:ObjectName="{8FCF24B8-0E1A-4652-ADD2-A3FA765F3847}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::FileDetails" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FELC_Loop through list of files and Archive\EPT_Archive File"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{EB64A853-CB6C-43E5-BA06-4B3DE8D943A5}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EPT_Archive File"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>Process.ArchiveFile.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>FileName</ParameterName>
+                <BindedVariableOrParameterName>User::FileName</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LocalArchiveDirectory</ParameterName>
+                <BindedVariableOrParameterName>User::LocalArchiveDirectory</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>LocalSourceDirectory</ParameterName>
+                <BindedVariableOrParameterName>User::LocalSourceDirectory</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>SFTPBatchFileHistoryId</ParameterName>
+                <BindedVariableOrParameterName>User::SFTPBatchFileHistoryId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{4ED9FFB5-F669-43D8-972D-830FFE1177E7}"
+          DTS:ObjectName="{4ED9FFB5-F669-43D8-972D-830FFE1177E7}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::LocalSourceDirectory" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{6E4B03E6-683E-4770-93BA-26E696202A4C}"
+          DTS:ObjectName="{6E4B03E6-683E-4770-93BA-26E696202A4C}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::LocalArchiveDirectory" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{DBC1C6F7-5673-469B-AE24-7FB9817FD96C}"
+          DTS:ObjectName="{DBC1C6F7-5673-469B-AE24-7FB9817FD96C}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::FileName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{0F62ECFA-22AB-477A-86C7-44B5F5EF305C}"
+          DTS:ObjectName="{0F62ECFA-22AB-477A-86C7-44B5F5EF305C}"
+          DTS:ValueIndex="3"
+          DTS:VariableName="User::SFTPBatchFileHistoryId" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Get File details"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{25D17D64-DBC7-45C6-8812-FD93A9E55956}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Get File details"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="select&#xA;&#x9;p.LocalSourceDirectory, &#xA;&#x9;p.LocalArchiveDirectory, &#xA;&#x9;bFH.FileName, &#xA;    bFH.SFTPBatchFileHistoryId&#xA;from &#xA;&#x9;Control.SFTPBatchHistory bH&#xA;&#x9;join Control.SFTPBatchFileHistory bFH on bH.SFTPBatchHistoryId = bFH.SFTPBatchHistoryId&#xA;&#x9;join Control.SFTPProcess p on p.SFTPProcessId = bH.SFTPProcessId&#xA;where &#xA;&#x9;bH.SFTPBatchHistoryId  = ?&#xA;&#x9;and bFH.ArchiveDatetime is null"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::FileDetails" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update File Archive End on Failure"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{deeb55a8-ed76-4fe6-aeb1-263005e0397d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update File Archive End on Failure"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="exec Control.usp_UpdateBatch ?, 'FileArchive', 'End', 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update File Archive End on Success"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{e68f3a7d-eba3-4f4d-a349-e1029427a4d9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update File Archive End on Success"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="exec Control.usp_UpdateBatch ?, 'FileArchive', 'End', 'Succeeded'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update File Archive Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{21d0e7c0-7cac-4ba7-9b9b-0114cb24fcf6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update File Archive Start"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3E8C9A10-AD27-4D28-9416-D657762199F5}"
+          SQLTask:SqlStatementSource="exec Control.usp_UpdateBatch ?, 'FileArchive', 'Start', 'Started'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2A0FED5E-5847-4FA0-ACBC-32BC5379F3CD}"
+      DTS:From="Package\SQL_Update File Archive Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL_Get File details" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{108FAE92-F4C7-497C-922A-F1BA82DD187E}"
+      DTS:From="Package\SQL_Get File details"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\FELC_Loop through list of files and Archive" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B985067A-E99C-41E4-9CDE-50DA569B2C30}"
+      DTS:From="Package\FELC_Loop through list of files and Archive"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL_Update File Archive End on Success" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{1480D3AE-A841-44BC-9A7E-0A4945C6861E}"
+      DTS:From="Package\FELC_Loop through list of files and Archive"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL_Update File Archive End on Failure"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\FELC_Loop through list of files and Archive\EPT_Archive File"
+          TopLeft="63,33" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="284,130"
+          Size="284,173"
+          Id="Package\FELC_Loop through list of files and Archive"
+          TopLeft="305.5,171" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\SQL_Get File details"
+          TopLeft="362,89" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="448,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="220,42"
+          Id="Package\SQL_Update File Archive Start"
+          TopLeft="344,6" />
+        <NodeLayout
+          Size="271,42"
+          Id="Package\SQL_Update File Archive End on Success"
+          TopLeft="156,446" />
+        <NodeLayout
+          Size="265,42"
+          Id="Package\SQL_Update File Archive End on Failure"
+          TopLeft="490,443" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="451.25,48">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="401.5,344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-110,102"
+              Start="0,0"
+              End="-110,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.1428571428571" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.1428571428571"
+                    Point2="0,41.1428571428571"
+                    Point3="-4,41.1428571428571" />
+                  <mssgle:LineSegment
+                    End="-106,41.1428571428571" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-106,41.1428571428571"
+                    Point2="-110,41.1428571428571"
+                    Point3="-110,45.1428571428571" />
+                  <mssgle:LineSegment
+                    End="-110,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="493.5,344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129,99"
+              Start="0,0"
+              End="129,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.9327731092437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.9327731092437"
+                    Point2="0,39.9327731092437"
+                    Point3="4,39.9327731092437" />
+                  <mssgle:LineSegment
+                    End="125,39.9327731092437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="125,39.9327731092437"
+                    Point2="129,39.9327731092437"
+                    Point3="129,43.9327731092437" />
+                  <mssgle:LineSegment
+                    End="129,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="49.25865234375,44.9327731092437,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
